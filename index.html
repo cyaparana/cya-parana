@@ -141,16 +141,77 @@
   .footer-logo span { color: var(--celeste); }
   footer a { color: var(--celeste); text-decoration: none; }
 
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    section { padding: 60px 20px; }
-    .hero { padding: 100px 20px 120px; }
-    .hero-stats { left: 20px; right: 20px; gap: 20px; }
-    .dif-grid, .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
-    .productos-header { flex-direction: column; align-items: flex-start; }
-    footer { flex-direction: column; text-align: center; padding: 24px 20px; }
+  @media (max-width: 1024px) {
+  .productos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; height: 56px; }
+  .nav-logo { font-size: 1rem; }
+  .nav-links { display: none; }
+  
+  section { padding: 50px 16px; }
+  .hero { padding: 80px 16px 100px; }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  .hero p { font-size: 0.95rem; }
+  .hero-stats { flex-direction: column; gap: 16px; bottom: 20px; }
+  
+  .dif-grid { grid-template-columns: 1fr; gap: 30px; }
+  .dif-highlight { padding: 32px 24px; }
+  .dif-highlight h3 { font-size: 1.3rem; }
+  
+  .productos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .contacto-grid { grid-template-columns: 1fr; gap: 30px; }
+  .contacto-form { padding: 24px; }
+  
+  footer { flex-direction: column; text-align: center; padding: 20px 16px; }
+}
+
+@media (max-width: 480px) {
+  nav { height: 52px; padding: 0 12px; }
+  .nav-logo { font-size: 0.9rem; }
+  
+  section { padding: 40px 12px; }
+  .hero { padding: 60px 12px 80px; }
+  .hero h1 { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .hero p { font-size: 0.9rem; }
+  .hero-tag { font-size: 0.7rem; padding: 5px 10px; }
+  
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; padding: 12px 16px; font-size: 0.9rem; }
+  
+  .section-title { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+  .section-sub { font-size: 0.9rem; }
+  
+  .dif-steps { gap: 20px; }
+  .step-num { width: 36px; height: 36px; font-size: 0.9rem; }
+  .step-text h4 { font-size: 0.95rem; }
+  .step-text p { font-size: 0.8rem; }
+  
+  .productos-grid { grid-template-columns: 1fr; }
+  .producto-body h3 { font-size: 0.95rem; }
+  .producto-body p { font-size: 0.8rem; }
+  
+  .contacto-item { padding: 12px 0; gap: 12px; }
+  .contacto-icon { width: 36px; height: 36px; font-size: 1rem; }
+  .contacto-item-text { font-size: 0.8rem; }
+  
+  .form-group input, .form-group select, .form-group textarea { 
+    padding: 10px 12px; font-size: 16px; 
   }
+  .form-submit { padding: 12px; font-size: 0.9rem; }
+}
+
+@media (max-width: 320px) {
+  section { padding: 30px 10px; }
+  .hero { padding: 50px 10px 60px; }
+  .hero h1 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+  
+  .stat-num { font-size: 1.4rem; }
+  .stat-label { font-size: 0.65rem; }
+  
+  .btn-primary, .btn-secondary { padding: 10px 14px; font-size: 0.85rem; }
+}
 </style>
 </head>
 <body>
@@ -440,7 +501,26 @@
   </div>
 </section>
 
-<footer>
+</footer>
+
+<script>
+  function filtrar(categoria, button) {
+    const cards = document.querySelectorAll('.producto-card');
+    cards.forEach(card => {
+      if (categoria === 'todos' || card.dataset.cat === categoria) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    button.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
   <div class="footer-logo">C<span>y</span>A <span>Paraná</span></div>
   <div>Soluciones Tecnológicas a Medida — Paraná, Entre Ríos</div>
   <div><a href="/cdn-cgi/l/email-protection#3e5d475f4e5f4c5f505f7e59535f5752105d5153"><span class="__cf_email__" data-cfemail="1a79637b6a7b687b747b5a7d777b737634797577">[email&#160;protected]</span></a></div>
