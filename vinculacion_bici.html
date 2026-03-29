@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Vinculación Silla de Ruedas con Bicicleta — CyA Paraná</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --azul: #0b2d45; --azul-medio: #1a72b0; --celeste: #3faee0; --naranja: #e8640a; --gris: #f0f5f9; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--gris); color: #1a1a2e; }
+  header { background: var(--azul); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: white; text-decoration: none; }
+  .logo span { color: var(--celeste); }
+  .back { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .back:hover { color: var(--celeste); }
+  .container { max-width: 960px; margin: 40px auto; padding: 0 24px 60px; }
+  .cat-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; background: #e3f2fd; color: var(--azul-medio); }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--azul); line-height: 1.2; margin-bottom: 12px; }
+  .descripcion { font-size: 1.05rem; color: #4a5568; line-height: 1.75; font-weight: 300; margin-bottom: 32px; max-width: 600px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; margin-bottom: 32px; }
+  .fotos { display: flex; flex-direction: column; gap: 16px; }
+  .foto { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(11,45,69,0.12); }
+  .foto img { width: 100%; height: 260px; object-fit: cover; display: block; }
+  .info-box { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 2px 16px rgba(11,45,69,0.08); margin-bottom: 16px; }
+  .info-box h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--azul); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--celeste); padding-bottom: 10px; }
+  .caracteristica { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #eef2f7; align-items: flex-start; }
+  .caracteristica:last-child { border-bottom: none; }
+  .car-label { font-size: 0.78rem; font-weight: 600; color: var(--azul-medio); min-width: 120px; text-transform: uppercase; letter-spacing: 0.3px; padding-top: 2px; }
+  .car-value { font-size: 0.88rem; color: #333; line-height: 1.5; }
+  .materiales-box { background: var(--azul); border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; }
+  .materiales-box h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--celeste); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .mat-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .mat-list li { background: rgba(63,174,224,0.15); border: 1px solid rgba(63,174,224,0.3); color: rgba(255,255,255,0.85); font-size: 0.8rem; padding: 5px 12px; border-radius: 20px; }
+  .procedimiento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .proc-box { background: white; border-radius: 14px; padding: 22px; box-shadow: 0 2px 12px rgba(11,45,69,0.07); }
+  .proc-box h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--azul); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; border-bottom: 2px solid var(--celeste); padding-bottom: 8px; }
+  .proc-box ol { padding-left: 18px; }
+  .proc-box ol li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 6px; }
+  .beneficios-box { background: linear-gradient(135deg, #e3f2fd, #f0f5f9); border-radius: 14px; padding: 22px 28px; margin-bottom: 24px; border-left: 4px solid var(--celeste); }
+  .beneficios-box h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--azul); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .beneficios-box ul { list-style: none; }
+  .beneficios-box ul li { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 6px; padding-left: 20px; position: relative; }
+  .beneficios-box ul li::before { content: "✓"; position: absolute; left: 0; color: var(--celeste); font-weight: bold; }
+  .wsp-btn { display: flex; align-items: center; justify-content: center; gap: 12px; background: #25D366; color: white; padding: 16px 28px; border-radius: 10px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s, transform 0.2s; width: 100%; }
+  .wsp-btn:hover { background: #1da851; transform: translateY(-2px); }
+  .venta-alquiler { text-align: center; font-size: 0.8rem; color: #888; margin-top: 10px; }
+  @media (max-width: 640px) { .grid, .procedimiento-grid { grid-template-columns: 1fr; } header { padding: 14px 20px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">C<span>y</span>A <span>Paraná</span></a>
+  <a href="index.html" class="back">← Volver al sitio</a>
+</header>
+
+<div class="container">
+  <span class="cat-badge">Discapacidad</span>
+  <h1>Sistema de Vinculación Silla de Ruedas con Bicicleta</h1>
+  <p class="descripcion">Kit que permite conectar una silla de ruedas convencional a una bicicleta estándar sin necesidad de modificaciones estructurales en ninguna de las dos unidades. Fomenta la recreación y el ejercicio compartido entre la persona con discapacidad y su acompañante.</p>
+
+  <div class="grid">
+    <div class="fotos">
+      <div class="foto"><img src="vinculacion_silla_bicicleta.png" alt="Sistema de Vinculación Silla con Bicicleta" loading="lazy"></div>
+    </div>
+    <div>
+      <div class="info-box">
+        <h3>Características</h3>
+        <div class="caracteristica"><span class="car-label">Instalación</span><span class="car-value">Rápida y sencilla, sin herramientas especiales</span></div>
+        <div class="caracteristica"><span class="car-label">Modificaciones</span><span class="car-value">No requiere modificaciones en silla ni bicicleta</span></div>
+        <div class="caracteristica"><span class="car-label">Entrega</span><span class="car-value">Diseñado a medida según las unidades del usuario</span></div>
+        <div class="caracteristica"><span class="car-label">Compatibilidad</span><span class="car-value">Se adapta a silla de ruedas y bicicleta existentes</span></div>
+      </div>
+      <div class="beneficios-box">
+        <h4>Beneficios</h4>
+        <ul>
+          <li>Fomenta la recreación de personas con discapacidad o dificultad motriz</li>
+          <li>Estimula el ejercicio del acompañante</li>
+          <li>Fortalece la vinculación entre ambos actores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="procedimiento-grid">
+    <div class="proc-box">
+      <h4>Procedimiento de vinculación</h4>
+      <ol>
+        <li>Posicionar y fijar el kit en la silla de ruedas</li>
+        <li>Desmontar la rueda delantera de la bicicleta</li>
+        <li>Posicionar y fijar la bicicleta en el kit</li>
+        <li>Listo para su uso</li>
+      </ol>
+    </div>
+    <div class="proc-box">
+      <h4>Procedimiento de desvinculación</h4>
+      <ol>
+        <li>Desacoplar el kit de la silla o de la bicicleta</li>
+        <li>El kit puede quedar fijo en cualquiera de las dos unidades si se prefiere</li>
+        <li>Colocar la rueda delantera en la bicicleta</li>
+        <li>Listo para usar ambas unidades por separado</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="materiales-box">
+    <h3>Materiales</h3>
+    <ul class="mat-list">
+      <li>Estructura de acero reforzada</li>
+      <li>Pintura electrostática o esmalte sintético</li>
+      <li>Diseño personalizado según unidades del usuario</li>
+    </ul>
+  </div>
+
+  <a href="https://wa.me/5493431055235138?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20el%20Sistema%20de%20Vinculaci%C3%B3n%20Silla%20con%20Bicicleta" class="wsp-btn" target="_blank">
+    <span style="font-size:1.4rem">💬</span> Consultar por WhatsApp
+  </a>
+  <p class="venta-alquiler">Venta y alquiler de equipos · Entrega en Paraná y Entre Ríos</p>
+</div>
+</body>
+</html>
