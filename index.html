@@ -100,7 +100,7 @@
   .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
   .tab { padding: 8px 20px; border-radius: 6px; border: 1.5px solid var(--gris-borde); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--gris-texto); }
   .tab.active, .tab:hover { background: var(--azul); border-color: var(--azul); color: white; }
-  .productos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .productos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
   .producto-card { border: 1.5px solid var(--gris-borde); border-radius: 14px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; background: white; }
   .producto-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11,45,69,0.12); border-color: var(--celeste-claro); }
   .producto-img { height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--gris-claro); }
@@ -297,6 +297,9 @@
         <h3>App para Personas con Dificultad en el Habla</h3>
         <p>Aplicación personalizada para facilitar la comunicación de personas con limitaciones en el habla.</p>
         <a href="app_auxilio_voz.html" class="producto-link" target="_blank">Ver descripción →</a>
+       </div>
+     </div>
+     <div class="producto-card" data-cat="discapacidad">
     <div class="producto-card" data-cat="discapacidad">
       <div class="producto-img"><img src="vinculacion_silla_bicicleta.png" alt="Sistema de Vinculación Silla con Bicicleta" loading="lazy"></div>
       <div class="producto-body">
